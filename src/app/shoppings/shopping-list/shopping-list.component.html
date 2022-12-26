@@ -1,0 +1,29 @@
+<div class="container mt-5">
+  <div class="row-md-12">
+    <input type="text" placeholder="Add item" [(ngModel)]="itemName" />
+    <input type="number" placeholder="Ammount" [(ngModel)]="ammount" />
+    <button class="btn btn-primary" (click)="add()" [disabled]="!itemName">
+      Add
+    </button>
+    <button
+      class="btn btn-danger"
+      (click)="delete()"
+      [disabled]="itemList.length == 0 && ammount <= 0"
+    >
+      Delete
+    </button>
+    <button
+      class="btn btn-primary"
+      [disabled]="itemList.length == 0"
+      (click)="clear()"
+    >
+      Clear
+    </button>
+    <div *ngFor="let item of itemList; let i = index">
+      <div>
+        <p>{{ item.name }}</p>
+        <p>{{ item.ammount }}</p>
+      </div>
+    </div>
+  </div>
+</div>
