@@ -1,29 +1,25 @@
 <div class="container mt-5">
-  <div class="row-md-12">
-    <input type="text" placeholder="Add item" [(ngModel)]="itemName" />
-    <input type="number" placeholder="Ammount" [(ngModel)]="ammount" />
-    <button class="btn btn-primary" (click)="add()" [disabled]="!itemName">
-      Add
-    </button>
-    <button
-      class="btn btn-danger"
-      (click)="delete()"
-      [disabled]="itemList.length == 0 && ammount <= 0"
-    >
-      Delete
-    </button>
-    <button
-      class="btn btn-primary"
-      [disabled]="itemList.length == 0"
-      (click)="clear()"
-    >
-      Clear
-    </button>
-    <div *ngFor="let item of itemList; let i = index">
-      <div>
-        <p>{{ item.name }}</p>
-        <p>{{ item.ammount }}</p>
-      </div>
+  <div>
+    <app-shopping-buttons
+      (itemCreated)="onItemAdded($event)"
+    ></app-shopping-buttons>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Item Name</th>
+            <th scope="col">Ammount</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let item of itemList; let i = index">
+          <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.ammount }}</td>
+            <button class="btn btn-danger" (click)="onRemove(i)">Delete</button>
+          </tr>
+        </tbody>
+        <p>total items in shopping list: {{ itemList.length }}</p>
+      </table>
     </div>
   </div>
 </div>

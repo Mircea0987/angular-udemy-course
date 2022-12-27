@@ -6,19 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./shopping-list.component.css'],
 })
 export class ShoppingListComponent {
-  itemName: string;
-  ammount = 0;
   itemList = [];
 
   ngOnit() {}
 
-  add() {
-    this.itemList.push({ name: this.itemName, ammount: this.ammount });
+  onItemAdded(itemData: { name: string; ammount: number }) {
+    this.itemList.push({ name: itemData.name, ammount: itemData.ammount });
   }
-  delete() {
-    this.itemList.pop();
-  }
-  clear() {
-    this.itemList = [{}];
+
+  onRemove(id: number) {
+    const position = id;
+    this.itemList.splice(position, 1);
   }
 }

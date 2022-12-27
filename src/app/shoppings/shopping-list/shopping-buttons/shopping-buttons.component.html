@@ -1,0 +1,11 @@
+<div class="row-md-12">
+  <input type="text" placeholder="Add item ex pizza" [(ngModel)]="itemName" />
+  <input type="number" placeholder="Ammount" [(ngModel)]="ammount" />
+  <button
+    class="btn btn-primary"
+    (click)="add()"
+    [disabled]="!itemName && ammount <= 0"
+  >
+    Add
+  </button>
+</div>
