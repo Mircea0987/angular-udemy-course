@@ -4,7 +4,7 @@
       (itemCreated)="onItemAdded($event)"
     ></app-shopping-buttons>
     <div>
-      <table class="table">
+      <table class="table" *ngIf="itemList.length > 0">
         <thead>
           <tr>
             <th scope="col">Item Name</th>
